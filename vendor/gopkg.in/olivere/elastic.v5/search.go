@@ -31,7 +31,6 @@ type SearchService struct {
 	ignoreUnavailable *bool
 	allowNoIndices    *bool
 	expandWildcards   string
-	trackScores 	  bool
 }
 
 // NewSearchService creates a new service for searching in Elasticsearch.
@@ -297,13 +296,6 @@ func (s *SearchService) AllowNoIndices(allowNoIndices bool) *SearchService {
 // concrete indices that are open, closed or both.
 func (s *SearchService) ExpandWildcards(expandWildcards string) *SearchService {
 	s.expandWildcards = expandWildcards
-	return s
-}
-
-// TrackScores is applied when sorting and controls if scores will be
-// tracked as well. Defaults to false.
-func (s *SearchService) TrackScores(trackScores bool) *SearchService {
-	s.searchSource.trackScores = trackScores
 	return s
 }
 
